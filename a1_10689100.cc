@@ -6,7 +6,8 @@ int user_input;
 bool check = false;
 int main(int argc, char const *argv[]) {
   do{
-      cout << "Check Prime Number \nEnter Number :";
+      cout << "Check Prime Number"<< endl;
+     cout << " Enter Number :";
       check = collect_data_validate();
   }while(check == false);
 
@@ -23,13 +24,14 @@ int main(int argc, char const *argv[]) {
 
 //function to collect data
 
-bool collect_data_validate(){
-  bool isPrime;
+bool collect_data_validate(){  
 
   //access the global variable #user_input and update it
   cin >> user_input;
 
   if(cin.fail()){
+	cin.clear();
+	cin.ignore();
     return false;
   }
   return true;
