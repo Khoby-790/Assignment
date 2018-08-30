@@ -40,9 +40,12 @@ bool collect_data_validate(){
 //function to compute prime Number
 
 bool checkPrime(int num){
-  int count;
-  if(num%2 == 0){
-    return false;
-  }
+  int count = 2;
+  while(count<= num/2){
+    if(num % count == 0){
+        return false;
+       }
+       count++;
+    }
   return true;
 }
