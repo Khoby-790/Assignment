@@ -36,7 +36,7 @@ int calcutateG_C_D(int firstNumber, int secondNumber){
       return secondNumber;
     }
     //else
-    firstNumber = firstNumber;
+    firstNumber = secondNumber;
     secondNumber = remainder;
     return calcutateG_C_D(firstNumber, secondNumber);
   }
