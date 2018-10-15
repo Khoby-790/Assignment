@@ -3,6 +3,8 @@
 #include <fstream>
 using namespace std;
 
+void findGrade(int,int);
+
 struct Student{
 	int id;
 	string name;
@@ -12,14 +14,14 @@ struct Student{
 	char grade;
 };
 
-float sum = 0;
+//public or global variables
+float sum = 0, totalAge = 0;
 int malecount = 0;
 int femalecount = 0;
-
+Student students[5];
 
 int main(){
 	int id = 10659863;
-	Student students[5];
 	ofstream ifile;
 	
 	for(int i = 0; i < 5; i++){
@@ -29,6 +31,7 @@ int main(){
 		cin >> students[i].name;
 		cout << "Enter student " << (i + 1) << "'s age :";
 		cin >> students[i].age;
+		totalAge += students[i].age;
 		cout << "Enter student " << (i + 1) << "'s gender :";
 		cin >> students[i].gender;
 		if(students[i].gender == 'M'){
@@ -38,31 +41,19 @@ int main(){
 		}
 		cout << "Enter student " << (i + 1) << "'s score :";
 		cin >> students[i].score;
-		if(students[i].score <= 39){
-			students[i].grade = 'F';
-		}else if(students[i].score > 39 && students[i].score < 50){
-			students[i].grade = 'E';
-		}else if(students[i].score > 49 && students[i].score < 60){
-			students[i].grade = 'D';
-		}else if(students[i].score > 59 && students[i].score < 70){
-			students[i].grade = 'C';
-		}else if(students[i].score > 69 && students[i].score < 80){
-			students[i].grade = 'B';
-		}else if(students[i].score > 79 && students[i].score < 101){
-			students[i].grade = 'A';
-		}
-		
+		findGrade(students[i].score,i);
 		sum += students[i].score;
+		cout << "=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=\n" << endl;
 	}
 	
 	//printing to the file 
 	
 	ifile.open("message.txt");
 	
-	ifile <<  " ID Number \t\t Name \t\t Age \t\t Gender \t\t Score \t\t Grade" << endl;
+	ifile <<  "ID Number\t\t Name\t\tAge\t\tGender\t\t Score\t\t Grade" << endl;
 	
 	for(int i = 0; i < 5; i++){
-		ifile << students[i].id << "\t\t" << students[i].name << "\t\t" << students[i].age << "\t\t" << students[i].gender << "\t\t" <<students[i].score << "\t\t" << students[i].grade << endl;
+		ifile << students[i].id << "\t\t" << students[i].name << "\t\t" << students[i].age << "\t\t" << students[i].gender << "\t\t " <<students[i].score << "\t\t" << students[i].grade << endl;
 	}
 	
 	// print the bottom part of the file 
@@ -71,6 +62,7 @@ int main(){
 	ifile << " ******************************************************************" << endl;
 	
 	ifile << "Average score : " << (sum/5) << endl;
+	ifile << "Average ages : " << (totalAge/5) <<endl;
 	ifile << "Number of males : " << malecount << endl;
 	ifile << "Number of females : " << femalecount << endl;
 	
@@ -80,4 +72,22 @@ int main(){
 }
 
 
+
+void findGrade(int score, int position){
+	
+		if(score <= 39){
+			students[position].grade = 'F';
+		}else if(score > 39 && score < 50){
+			students[position].grade = 'E';
+		}else if(score > 49 && score < 60){
+			students[position].grade = 'D';
+		}else if(score > 59 && score < 70){
+			students[position].grade = 'C';
+		}else if(score > 69 && score < 80){
+			students[position].grade = 'B';
+		}else if(score > 79 && score < 101){
+			students[position].grade = 'A';
+		}
+		
+}
 
