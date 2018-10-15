@@ -1,0 +1,11 @@
+ ID Number 		 Name 		 Age 		 Gender 		 Score 		 Grade
+10659868		Frank		19		M		87		A
+10659873		Esther		20		F		85		A
+10659878		Ato		19		M		85		A
+10659883		Mathias		65		M		14		F
+10659888		Emma		20		M		97		A
+ ******************************************************************
+ ******************************************************************
+Average score : 73.6
+Number of males : 4
+Number of females : 1
